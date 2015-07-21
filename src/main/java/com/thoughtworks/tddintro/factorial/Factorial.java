@@ -5,7 +5,7 @@ public class Factorial {
         if (i < 0) {
             throw new IllegalArgumentException("Positive Integers Only!");
         } else {
-            return 1;
+            return i;
         }
     }
 }
