@@ -4,6 +4,8 @@ public class Factorial {
     public Integer compute(int i) throws IllegalArgumentException {
         if (i < 0) {
             throw new IllegalArgumentException("Positive Integers Only!");
+        } else if (i == 0) {
+            return 1;
         } else {
             return i;
         }
