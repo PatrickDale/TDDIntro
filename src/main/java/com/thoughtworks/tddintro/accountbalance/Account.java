@@ -19,6 +19,8 @@ public class Account {
     }
 
     public void withdraw(int amount) {
-        this.balance -= amount;
+        if (this.balance >= amount) {
+            this.balance -= amount;
+        }
     }
 }
