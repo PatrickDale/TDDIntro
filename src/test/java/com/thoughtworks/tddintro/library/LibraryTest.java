@@ -56,7 +56,14 @@ public class LibraryTest {
     @Test
     public void shouldPrintBothBookTitlesWhenThereAreTwoBooks() {
 
-        // implement me
+        this.books.add("Book Title1");
+        this.books.add("Book Title2");
+        Library library = new Library(this.books, this.printStream, null);
+
+        library.listBooks();
+
+        verify(this.printStream).println("Book Title1");
+        verify(this.printStream).println("Book Title2");
     }
 
     /*
