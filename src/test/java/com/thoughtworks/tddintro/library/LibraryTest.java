@@ -2,6 +2,7 @@ package com.thoughtworks.tddintro.library;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormatter;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
@@ -20,31 +21,36 @@ public class LibraryTest {
 
      */
 
+    List<String> books;
+    PrintStream printStream;
+
+    @Before
+    public void setup() {
+        this.books = new ArrayList<>();
+        this.printStream = mock(PrintStream.class);
+    }
+
 
     @Test
     public void shouldPrintBookTitleWhenThereIsOneBook() {
 
-        List<String> books = new ArrayList<>();
         String title = "Book Title";
-        books.add(title);
-        PrintStream printStream = mock(PrintStream.class);
-        Library library = new Library(books, printStream, null);
+        this.books.add(title);
+        Library library = new Library(this.books, this.printStream, null);
 
         library.listBooks();
 
-        verify(printStream).println("Book Title");
+        verify(this.printStream).println("Book Title");
     }
 
     @Test
     public void shouldPrintNothingWhenThereAreNoBooks() {
 
-        List<String> books = new ArrayList<>();
-        PrintStream printStream = mock(PrintStream.class);
-        Library library = new Library(books, printStream, null);
+        Library library = new Library(this.books, this.printStream, null);
 
         library.listBooks();
 
-        verifyZeroInteractions(printStream);
+        verifyZeroInteractions(this.printStream);
     }
 
     @Test
